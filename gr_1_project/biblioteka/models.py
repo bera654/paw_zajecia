@@ -6,6 +6,18 @@ MONTHS = models.IntegerChoices(
     'Styczeń Luty Marzec Kwiecień Maj Czerwiec Lipiec Sierpień Wrzesień Październik Listopad Grudzień'
 )
 
+# PLEC_WYBOR = (
+#         ("K", "kobieta"),
+#         ("M", "mezczyzna"),
+#         ("I", "inna")
+
+# )
+
+PLCIE = models.IntegerChoices(
+    "Plcie", 
+    "Kobieta Mezczyzna Inna"
+)
+
 # Lista wyboru formatu książki
 BOOK_FORMATS = (
     ('P', 'Papierowa'),
@@ -68,9 +80,13 @@ class Osoba (models.Model):
     )
     imie = models.CharField(max_length=50, blank = False, null = False) #ograniczona dlugosc pola imie
     nazwisko = models.CharField(max_length=100, blank = False, null = False) #ograniczona dlugosc pola nazwisko
-    plec = models.CharField(max_length=1, choices = PLEC_WYBOR, default = "I")
+    plec = models.IntegerField(choices = PLCIE.choices, default = PLCIE.choices[2][0])
     stanowisko = models.ForeignKey("Stanowisko", on_delete = models.CASCADE)
     data_dodania = models.DateField(auto_now_add=True, editable = False)
-    
 
+    def __str__(self):
+        return f"Osoba: {self.imie} {self.nazwisko}"
+    
+    class Meta:
+        ordering = ["nazwisko"]
 
