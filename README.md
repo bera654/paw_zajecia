@@ -1,2 +1,4 @@
 # Projektowanie Aplikacji Webowych 2025/26
-Twoje imię i nazwisko
+Berenika Kondrat
+python manage.py startapp biblioteka
+python manage.py runserver
