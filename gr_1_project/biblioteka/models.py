@@ -90,3 +90,5 @@ class Osoba (models.Model):
     class Meta:
         ordering = ["nazwisko"]
 
+
+        
