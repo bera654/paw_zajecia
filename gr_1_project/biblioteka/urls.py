@@ -11,4 +11,5 @@ urlpatterns = [
 urlpatterns = [
     path("welcome/", views.welcome_view),
     path("html/osoby/", views.osoba_list_html, name="osoba-list"),
+    path("html/osoby/<int:id>/", views.osoba_detail_html, name="osoba-detail"),
 ]
